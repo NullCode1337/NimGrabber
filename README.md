@@ -22,4 +22,5 @@ First OSS Discord Token Grabber written in Nim
 
 ### TODO
 - Nicer upload (using embeds)
+- Testing on computers without the nim toolchain
 - Make code less weird
