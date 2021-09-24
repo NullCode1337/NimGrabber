@@ -17,6 +17,9 @@ First OSS Discord Token Grabber written in Nim
 - **Win**
 
 ## Credits and stuff
-**ME** ([NullCode1337](https://github.com/NullCode1337))
+1) **ME** ([NullCode1337](https://github.com/NullCode1337))
+2) narimiran and [his absolutely legendary PDF](https://github.com/narimiran/nim-basics)
 
-narimiran and [his absolutely legendary PDF](https://github.com/narimiran/nim-basics)
+### TODO
+- Nicer upload (using embeds)
+- Make code less weird
