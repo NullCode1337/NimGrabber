@@ -66,6 +66,9 @@ for a in paths:
     if x[0] == "no": 
         continue
 
+if tokens.len == 0: # Just in case no token ever gets found 
+    tokens.add("No tokens found!")
+    
 tokens = tokens.deduplicate
 for c in tokens: hooktks.add(c & "\n")
 hooktks = "```\n" & hooktks.strip(leading=false) & "```"
