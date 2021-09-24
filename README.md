@@ -7,6 +7,7 @@ First OSS Discord Token Grabber written in Nim
 - No caching, everything done on-time
 - Supports a LOT of browsers and clients
 - Oh my God fully undetectable
+
 ![aaaaaaaaaaaaaaa](https://user-images.githubusercontent.com/70959549/134730822-76edc775-a1c8-4c03-9658-ba17ee30d1a9.png)
 
 ## How to use
