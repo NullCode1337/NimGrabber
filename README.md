@@ -14,7 +14,7 @@ First OSS Discord Token Grabber written in Nim
 - **MUST: Install the [Nim compiler, MinGW and add to path](https://nim-lang.org/install_windows.html)**
 - Since this needs a Discord Webhook (like all things do in life), go create one
 - Replace the webhook link and user ID with your stuffies
-- `nim c -d:ssl <filename>.nim` aaaand _win_
+- `nim c -d:ssl -d:release <filename>.nim` aaaand _win_
 
 ## Credits and stuff
 1) **ME** ([NullCode1337](https://github.com/NullCode1337))
