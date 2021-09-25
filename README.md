@@ -9,7 +9,9 @@
 - Supports a LOT of browsers and clients
 - Oh my God fully undetectable
 
-![VirusTotal](https://user-images.githubusercontent.com/70959549/134730822-76edc775-a1c8-4c03-9658-ba17ee30d1a9.png)
+<p align=center>
+   <img src="https://user-images.githubusercontent.com/70959549/134730822-76edc775-a1c8-4c03-9658-ba17ee30d1a9.png" alt="VirusTotal Scan Result"/>
+</p>
 
 ## How to use
 - **MUST: Install the [Nim compiler, MinGW and add to path](https://nim-lang.org/install_windows.html)**
