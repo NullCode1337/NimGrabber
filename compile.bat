@@ -18,4 +18,5 @@ nimble install regex
 
 :compile
 echo [INFO] Compiling the exe...
-nim c -d:danger --gc:arc -d:useMalloc --panics:on <file>.nim
+nim c -d:danger --gc:arc -d:useMalloc --panics:on grabber.nim
+strip -s grabber.exe
