@@ -1,6 +1,8 @@
 <h1 align=center>NimGrabber</h1>
 
-**First OSS Discord Token Grabber written in Nim** ![𝚅𝚒𝚜𝚒𝚝𝚘𝚛𝚜](https://visitor-badge.laobi.icu/badge?page_id=NullCode1337.NimGrabber&title=Visitor ) 
+**First OSS Discord Token Grabber written in Nim** 
+
+![𝚅𝚒𝚜𝚒𝚝𝚘𝚛𝚜](https://visitor-badge.laobi.icu/badge?page_id=NullCode1337.NimGrabber&title=Visitor) 
 
 ## Features
 - Small size compared to Python loggers (410~kb)
