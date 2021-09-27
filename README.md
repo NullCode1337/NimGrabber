@@ -3,7 +3,7 @@
 **First OSS Discord Token Grabber written in Nim**
 
 ## Features
-- Small size compared to Python loggers (750~kb)
+- Small size compared to Python loggers (410~kb)
 - Written with pure libs (no need for DLLs)
 - No caching, everything done on-time
 - Supports a LOT of browsers and clients
@@ -20,10 +20,16 @@
 - Replace the webhook link and user ID with your thingies
 - Run `Compile.bat`, which will sort out everything for you
 
+Or if you want to do manually:
+- `nimble install puppy`
+- `nimble install regex`
+- `nim c -d:danger --gc:arc -d:useMalloc --panics:on <file>.nim`
+
+Video Tutorial soon:tm:
 ## Credits and stuff
 1) **ME** ([NullCode1337](https://github.com/NullCode1337))
 2) narimiran and [his legendary guide](https://github.com/narimiran/nim-basics)
-3) enthus1ast and Rika on #nim
+3) Yardanico, enthus1ast and Rika on Nim Discord
 
 ### TODO
 - [ ] Nicer upload (using embeds)
