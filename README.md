@@ -29,7 +29,7 @@ Video Tutorial soon:tm:
 ## Credits and stuff
 1) **ME** ([NullCode1337](https://github.com/NullCode1337))
 2) narimiran and [his legendary guide](https://github.com/narimiran/nim-basics)
-3) Yardanico, enthus1ast and Rika on Nim Discord
+3) [Yardanico](https://github.com/Yardanico), enthus1ast and Rika on Nim Discord
 
 ### TODO
 - [ ] Nicer upload (using embeds)
