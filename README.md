@@ -14,9 +14,9 @@
 </p>
 
 ## How to use
-- **MUST: Download the [Nim compiler](https://nim-lang.org/install_windows.html), and run finish.exe**
+- **MUST: Install Nim [(using my guide](https://gist.github.com/NullCode1337/95addeca955456c92aeb9fbc26f3615a))**
+- Since this needs a Discord Webhook (like all things do), go create one
 - Download repo as zip / git clone, and store somewhere
-- Since this needs a Discord Webhook (like all things do in life), go create one
 - Replace the webhook link and user ID with your thingies
 - Run `Compile.bat`, which will sort out everything for you
 
