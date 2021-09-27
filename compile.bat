@@ -5,10 +5,11 @@ echo  /   ^|   \^|  ^|/     ^\/   ^\  __^\_  __ ^\__  ^\ ^| __ \^| __ ^\_/ __ \_
 echo /    ^|    \  ^|       \    \_\  \  ^| ^\// __ \^| \_\ \ \_\ \  ___/^|  ^| \/
 echo ^\____^|__  ^/__^|__^|_^|  ^/^\______  ^/__^|  ^(____  ^/___  ^/___  ^/^\___  ^>__^|   
 echo         \/         \/        \/           \/    \/    \/     \/       
-echo                Discord Token Grabber written in Nim
-set /p yes=You have dependencies installed? (y/n):
-if %yes%==y (goto compile)
-if %yes%==Y (goto compile) else (goto install_dep)
+echo                Discord Token Grabber written in Nim & echo.
+
+choice /C YN /N /M "Do you have dependencies installed? [Y/N]"
+if %errorlevel%==1 (goto compile)
+if %errorlevel%==2 (goto install_dep)
 
 :install_dep
 echo. & echo [INFO] Installing dependencies...
@@ -17,4 +18,4 @@ nimble install regex
 
 :compile
 echo [INFO] Compiling the exe...
-nim c -d:release grabber.nim
+nim c -d:danger --gc:arc -d:useMalloc --panics:on <file>.nim
