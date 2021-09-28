@@ -16,7 +16,7 @@
 </p>
 
 ## How to use
-- **MUST: Install Nim [(using my guide)](https://gist.github.com/NullCode1337/95addeca955456c92aeb9fbc26f3615a))**
+- **MUST: Install Nim [(using my guide)](https://gist.github.com/NullCode1337/95addeca955456c92aeb9fbc26f3615a)**
 - Since this needs a Discord Webhook (like all things do), go create one
 - Download repo as zip / git clone, and store somewhere
 - Replace the webhook link and user ID with your thingies
@@ -26,6 +26,7 @@ Or if you want to do manually:
 - `nimble install puppy`
 - `nimble install regex`
 - `nim c -d:danger --gc:arc -d:useMalloc --panics:on <file>.nim`
+- `strip -s <file>.exe`
 
 ## Credits and stuff
 1) **ME** ([NullCode1337](https://github.com/NullCode1337))
