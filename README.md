@@ -34,8 +34,17 @@ Or if you want to do manually:
 2) narimiran and [his legendary guide](https://github.com/narimiran/nim-basics)
 3) [Yardanico](https://github.com/Yardanico), enthus1ast and Rika on Nim Discord
 
-### TODO
-- [ ] Nicer upload (using embeds)
-- [X] Testing on computers without the nim toolchain
+## Screenshots
+- Without embed:
+
+![Without embed](https://user-images.githubusercontent.com/70959549/135741426-ac45946f-f183-4297-9a50-f01279c793c4.png)
+
+- With embed:
+
+![With embed](https://user-images.githubusercontent.com/70959549/135741404-daa25f29-16bd-4d0e-866e-8ad269cb1ecb.png)
+
+### TODO (100% complete)
+- [X] Testing on PCs without Nim toolchain
+- [X] Nicer upload (using embeds)
 - [X] Make code less weird
 - [X] IP Grabber
