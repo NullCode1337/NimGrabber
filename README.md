@@ -24,10 +24,12 @@
 - Run `Compile.bat`, which will sort out everything for you
 
 Or if you want to do manually:
-- `nimble install puppy`
-- `nimble install regex`
-- `nim c -d:danger --gc:arc -d:useMalloc --panics:on <file>.nim`
-- `strip -s <file>.exe`
+```bash
+nimble install puppy
+nimble install regex
+nim c -d:danger --gc:arc -d:useMalloc --panics:on <file>.nim
+strip -s <file>.exe
+```
 
 ## Credits and stuff
 1) **ME** ([NullCode1337](https://github.com/NullCode1337))
