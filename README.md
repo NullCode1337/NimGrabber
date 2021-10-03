@@ -20,7 +20,7 @@
 - **MUST: Install Nim [(using my guide)](https://gist.github.com/NullCode1337/95addeca955456c92aeb9fbc26f3615a)**
 - Since this needs a Discord Webhook (like all things do), go create one
 - Download repo as zip / git clone, and store somewhere
-- Replace the webhook link, user ID and everything else with your things
+- Replace the webhook link, user ID and toggle whatever you need
 - Run `Compile.bat`, which will sort out everything for you
 
 Or if you want to do manually:
