@@ -47,4 +47,5 @@ Or if you want to do manually:
 - [X] Testing on PCs without Nim toolchain
 - [X] Nicer upload (using embeds)
 - [X] Make code less weird
+- [ ] Token Checker
 - [X] IP Grabber
