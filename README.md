@@ -45,7 +45,7 @@ strip -s <file>.exe
 
 ![With embed](https://user-images.githubusercontent.com/70959549/135741404-daa25f29-16bd-4d0e-866e-8ad269cb1ecb.png)
 
-### TODO (100% complete)
+### TODO
 - [X] Testing on PCs without Nim toolchain
 - [X] Nicer upload (using embeds)
 - [X] Make code less weird
